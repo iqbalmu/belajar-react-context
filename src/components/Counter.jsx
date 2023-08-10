@@ -3,15 +3,19 @@ import { useAppContext } from "../context/app-context";
 
 function Counter() {
 
-  const context = useAppContext()
+  const [state,dispatch] = useAppContext()  
 
   function addCount() {
-    context.setCount( e => e + 1)
+    dispatch({
+      type: 'count-plus'
+    })
   }
 
   function minCount() {
-    if(context.count > 0) {
-      context.setCount( e => e - 1)
+    if(state.count > 0) {
+      dispatch({
+        type: 'count-min'
+      })
     }
   }
 
